@@ -17,4 +17,16 @@ jobs:
     - run: corepack enable
     - run: yarn set version stable
     - run: yarn
-    - run: yarn start    
+    - run: yarn start
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
+        AWS_ENDPOINT: ${{ secrets.AWS_ENDPOINT }}
+        AWS_KEY_NAME: ${{ secrets.AWS_KEY_NAME }}
+        SF6_LOGIN: ${{ secrets.SF6_LOGIN }}
+        SF6_PASSWORD: ${{ secrets.SF6_PASSWORD }}
+        SF6_COUNTRY: ${{ secrets.SF6_COUNTRY }}
+        SF6_BIRTHDAY: ${{ secrets.SF6_BIRTHDAY }}
+        SF6_BIRTHMONTH: ${{ secrets.SF6_BIRTHMONTH }}
+        SF6_BIRTHYEAR: ${{ secrets.SF6_BIRTHYEAR }}
