@@ -12,10 +12,9 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
   const browser = await puppeteer.launch({ headless: 'new' });
   const page = await browser.newPage();
   const url = 'https://www.streetfighter.com/6/buckler/fr/auth/loginep?redirect_url=/';
-  const dataUrl = 'https://www.streetfighter.com/6/buckler/_next/data/1EWODhsGJ_JqWI89YQwa0/en/ranking/master.json?page=1';
 
   await page.goto(url);
-
+  console.dir(process.env);
   (await page.waitForSelector('#country')).select(process.env.SF6_COUNTRY);
   (await page.waitForSelector('#birthDay')).select(process.env.SF6_BIRTHDAY);
   (await page.waitForSelector('#birthMonth')).select(process.env.SF6_BIRTHMONTH);
