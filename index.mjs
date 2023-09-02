@@ -1,9 +1,15 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-extra';
 import AWS from "aws-sdk";
 import 'dotenv/config';
+import ua from 'puppeteer-extra-plugin-anonymize-ua';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  puppeteer.use(ua);
+  puppeteer.use(StealthPlugin());
+
+  const browser = await puppeteer.launch({ headless: 'new' });
   const page = await browser.newPage();
   const url = 'https://www.streetfighter.com/6/buckler/fr/auth/loginep?redirect_url=/';
   const dataUrl = 'https://www.streetfighter.com/6/buckler/_next/data/1EWODhsGJ_JqWI89YQwa0/en/ranking/master.json?page=1';
@@ -34,14 +40,6 @@ import 'dotenv/config';
   await page.locator('button').click();
 
   await page.waitForNavigation();
-
-  page
-    .waitForResponse(dataUrl)
-    .then(async response => {
-      console.log(response.json());
-    });
-
-  await page.goto(dataUrl);
 
   const cookies = await page.cookies();
 

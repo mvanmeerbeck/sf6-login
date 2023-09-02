@@ -4,7 +4,12 @@
   "dependencies": {
     "aws-sdk": "^2.1450.0",
     "dotenv": "^16.3.1",
-    "puppeteer": "^21.1.1"
+    "puppeteer": "^21.1.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-anonymize-ua": "^2.4.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "puppeteer-extra-plugin-user-data-dir": "^2.4.1",
+    "puppeteer-extra-plugin-user-preferences": "^2.4.1"
   },
   "scripts": {
     "start": "node index.mjs"
