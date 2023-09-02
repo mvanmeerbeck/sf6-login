@@ -4,7 +4,6 @@ import 'dotenv/config';
 import ua from 'puppeteer-extra-plugin-anonymize-ua';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
-
 (async () => {
   puppeteer.use(ua);
   puppeteer.use(StealthPlugin());
@@ -14,7 +13,7 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
   const url = 'https://www.streetfighter.com/6/buckler/fr/auth/loginep?redirect_url=/';
 
   await page.goto(url);
-  console.dir(process.env);
+
   (await page.waitForSelector('#country')).select(process.env.SF6_COUNTRY);
   (await page.waitForSelector('#birthDay')).select(process.env.SF6_BIRTHDAY);
   (await page.waitForSelector('#birthMonth')).select(process.env.SF6_BIRTHMONTH);
